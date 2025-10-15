@@ -44,19 +44,20 @@ export const useLocalStorage = () => {
       try {
         const parsed = JSON.parse(storedConversations);
         const conversationsWithDates = parsed.map(
-          (conv: Record<string, any>) => ({
+          (conv: Record<string, unknown>) => ({
             ...conv,
+
             createdAt: conv.createdAt
-              ? new Date(conv.createdAt)
+              ? new Date(conv.createdAt as string | number | Date)
               : conv.date
-              ? new Date(conv.date)
+              ? new Date(conv.date as string | number | Date)
               : new Date(),
             updatedAt: conv.updatedAt
-              ? new Date(conv.updatedAt)
+              ? new Date(conv.updatedAt as string | number | Date)
               : conv.date
-              ? new Date(conv.date)
+              ? new Date(conv.date as string | number | Date)
               : new Date(),
-            messages: conv.messages
+            messages: Array.isArray(conv.messages)
               ? conv.messages.map((msg: Message) => ({
                   ...msg,
                   timestamp: msg.timestamp
@@ -81,14 +82,14 @@ export const useLocalStorage = () => {
           const currentWithDates = {
             ...parsed,
             createdAt: parsed.createdAt
-              ? new Date(parsed.createdAt)
+              ? new Date(parsed.createdAt as string | number | Date)
               : parsed.date
-              ? new Date(parsed.date)
+              ? new Date(parsed.date as string | number | Date)
               : new Date(),
             updatedAt: parsed.updatedAt
-              ? new Date(parsed.updatedAt)
+              ? new Date(parsed.updatedAt as string | number | Date)
               : parsed.date
-              ? new Date(parsed.date)
+              ? new Date(parsed.date as string | number | Date)
               : new Date(),
             messages: parsed.messages
               ? parsed.messages.map((msg: Message) => ({

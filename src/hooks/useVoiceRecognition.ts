@@ -169,7 +169,7 @@ export const useVoiceRecognition = ({
       return;
     }
 
-    // @ts-ignore
+    // @ts-expect-error - webkitSpeechRecognition is not in standard types
     const recognition = new webkitSpeechRecognition();
     recognition.continuous = continuous;
     recognition.interimResults = true;
