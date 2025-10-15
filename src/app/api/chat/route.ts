@@ -165,26 +165,31 @@ Languages supported: English, Urdu (اردو), Hindi (हिन्दी), Arabi
     };
 
     return NextResponse.json(chatResponse, { status: 200 });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Error in chat API:", error);
-    console.error("Error details:", error.message);
+    console.error(
+      "Error details:",
+      error instanceof Error ? error.message : String(error)
+    );
 
     let errorMessage = "Failed to process chat request";
     let statusCode = 500;
 
     // Handle network errors
-    if (error.name === "TypeError" && error.message.includes("fetch")) {
-      errorMessage = "Network error. Please check your connection.";
-      statusCode = 503;
-    } else if (error.message?.includes("timeout")) {
-      errorMessage = "Request timeout. Please try again.";
-      statusCode = 504;
+    if (error instanceof Error) {
+      if (error.name === "TypeError" && error.message.includes("fetch")) {
+        errorMessage = "Network error. Please check your connection.";
+        statusCode = 503;
+      } else if (error.message?.includes("timeout")) {
+        errorMessage = "Request timeout. Please try again.";
+        statusCode = 504;
+      }
     }
 
     return NextResponse.json(
       {
         error: errorMessage,
-        details: error.message || "Unknown error",
+        details: error instanceof Error ? error.message : "Unknown error",
       },
       { status: statusCode }
     );

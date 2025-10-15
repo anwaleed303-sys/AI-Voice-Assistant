@@ -5,7 +5,16 @@ import { VoiceAssistant } from "./components/VoiceAssistant/VoiceAssistant";
 
 export default function Home() {
   const [isMounted, setIsMounted] = useState(false);
-  const [particles, setParticles] = useState<any[]>([]);
+  const [particles, setParticles] = useState<
+    {
+      id: number;
+      x: number;
+      y: number;
+      duration: number;
+      delay: number;
+      size: number;
+    }[]
+  >([]);
 
   // Generate particles only on client side to avoid hydration mismatch
   useEffect(() => {

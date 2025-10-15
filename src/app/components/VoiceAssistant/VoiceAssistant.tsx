@@ -52,7 +52,6 @@ export const VoiceAssistant: React.FC = () => {
     addMessageToCurrentConversation,
     createNewConversation,
     deleteConversation,
-
     clearAllConversations,
   } = useLocalStorage();
   const [particles, setParticles] = useState<Particle[]>([]);
@@ -189,9 +188,18 @@ export const VoiceAssistant: React.FC = () => {
             startListening();
           }, 500);
         }
-      } catch (error: any) {
+      } catch (error: unknown) {
         antMessage.error(
-          error.response?.data?.error || "Failed to process your request"
+          error instanceof Error &&
+            "response" in error &&
+            typeof error.response === "object" &&
+            error.response !== null &&
+            "data" in error.response &&
+            typeof error.response.data === "object" &&
+            error.response.data !== null &&
+            "error" in error.response.data
+            ? String(error.response.data.error)
+            : "Failed to process your request"
         );
       } finally {
         setIsProcessing(false);
@@ -210,7 +218,10 @@ export const VoiceAssistant: React.FC = () => {
     onResult: handleVoiceResult,
     onError: (error) => {
       console.error("Voice recognition error:", error);
-      if (error === "not-allowed" || error.includes("not-allowed")) {
+      if (
+        error === "not-allowed" ||
+        (typeof error === "string" && error.includes("not-allowed"))
+      ) {
         setPermissionError("Enable microphone access in Settings");
         setMicPermissionGranted(false);
       }

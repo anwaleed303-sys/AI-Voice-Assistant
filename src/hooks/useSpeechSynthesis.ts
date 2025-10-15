@@ -126,7 +126,7 @@ export const useSpeechSynthesis = ({
         pitch?: number;
         volume?: number;
         onEnd?: () => void;
-        onError?: (error: any) => void;
+        onError?: (error: SpeechSynthesisErrorEvent) => void;
       }
     ): Promise<void> => {
       return new Promise((resolve, reject) => {
@@ -171,7 +171,7 @@ export const useSpeechSynthesis = ({
           resolve(); // Resolve promise when speech ends
         };
 
-        utterance.onerror = (error) => {
+        utterance.onerror = (error: SpeechSynthesisErrorEvent) => {
           console.error("Speech synthesis error:", error);
           setIsSpeaking(false);
           options?.onError?.(error);

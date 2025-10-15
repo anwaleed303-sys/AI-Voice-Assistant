@@ -43,25 +43,29 @@ export const useLocalStorage = () => {
     if (storedConversations) {
       try {
         const parsed = JSON.parse(storedConversations);
-        const conversationsWithDates = parsed.map((conv: any) => ({
-          ...conv,
-          createdAt: conv.createdAt
-            ? new Date(conv.createdAt)
-            : conv.date
-            ? new Date(conv.date)
-            : new Date(),
-          updatedAt: conv.updatedAt
-            ? new Date(conv.updatedAt)
-            : conv.date
-            ? new Date(conv.date)
-            : new Date(),
-          messages: conv.messages
-            ? conv.messages.map((msg: any) => ({
-                ...msg,
-                timestamp: msg.timestamp ? new Date(msg.timestamp) : new Date(),
-              }))
-            : [],
-        }));
+        const conversationsWithDates = parsed.map(
+          (conv: Record<string, any>) => ({
+            ...conv,
+            createdAt: conv.createdAt
+              ? new Date(conv.createdAt)
+              : conv.date
+              ? new Date(conv.date)
+              : new Date(),
+            updatedAt: conv.updatedAt
+              ? new Date(conv.updatedAt)
+              : conv.date
+              ? new Date(conv.date)
+              : new Date(),
+            messages: conv.messages
+              ? conv.messages.map((msg: Message) => ({
+                  ...msg,
+                  timestamp: msg.timestamp
+                    ? new Date(msg.timestamp)
+                    : new Date(),
+                }))
+              : [],
+          })
+        );
         setConversations(conversationsWithDates);
       } catch (error) {
         console.error("Error loading conversations:", error);
@@ -87,7 +91,7 @@ export const useLocalStorage = () => {
               ? new Date(parsed.date)
               : new Date(),
             messages: parsed.messages
-              ? parsed.messages.map((msg: any) => ({
+              ? parsed.messages.map((msg: Message) => ({
                   ...msg,
                   timestamp: msg.timestamp
                     ? new Date(msg.timestamp)
