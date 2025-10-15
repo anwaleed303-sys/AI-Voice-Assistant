@@ -1,0 +1,422 @@
+/* AI Voice Assistant - Global Styles */
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #0a0e1a; /* your exact main color */
+  color: #ffffff; /* optional: ensures text stays visible */
+  overflow-x: hidden;
+}
+
+/* Make sure root or wrapper matches */
+#__next,
+main,
+.ai-background {
+  background-color: #0a0e1a; /* same color everywhere */
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(31, 41, 55, 0.5);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #8b5cf6, #a78bfa);
+}
+
+/* Ant Design Overrides */
+.ant-btn {
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ant-btn:hover {
+  transform: translateY(-1px);
+}
+
+.ant-btn:active {
+  transform: translateY(0);
+}
+
+.ant-btn-primary {
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+.ant-btn-primary:hover {
+  box-shadow: 0 6px 16px rgba(99, 102, 241, 0.4);
+}
+
+.ant-input,
+.ant-input-affix-wrapper,
+.ant-picker {
+  background: rgba(31, 41, 55, 0.8) !important;
+  border-color: rgba(99, 102, 241, 0.3) !important;
+  color: white !important;
+  transition: all 0.3s ease;
+}
+
+.ant-input:hover,
+.ant-input-affix-wrapper:hover,
+.ant-picker:hover {
+  border-color: rgba(99, 102, 241, 0.5) !important;
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.1);
+}
+
+.ant-input:focus,
+.ant-input-affix-wrapper-focused,
+.ant-picker-focused {
+  border-color: rgba(99, 102, 241, 0.7) !important;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15) !important;
+}
+
+.ant-input::placeholder,
+.ant-input-affix-wrapper input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.ant-select-dropdown {
+  background: rgba(17, 24, 39, 0.98) !important;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+.ant-select-item {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.ant-select-item-option-selected {
+  background: rgba(99, 102, 241, 0.15) !important;
+  color: white !important;
+}
+
+.ant-select-item-option-active {
+  background: rgba(99, 102, 241, 0.1) !important;
+}
+
+.ant-picker-dropdown {
+  background: rgba(17, 24, 39, 0.98) !important;
+  border: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+.ant-picker-panel-container {
+  background: rgba(17, 24, 39, 0.98) !important;
+  backdrop-filter: blur(12px);
+}
+
+.ant-picker-header,
+.ant-picker-body,
+.ant-picker-footer {
+  border-color: rgba(99, 102, 241, 0.2) !important;
+}
+
+.ant-picker-cell-in-view.ant-picker-cell-selected .ant-picker-cell-inner {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6) !important;
+}
+
+.ant-picker-cell-in-view.ant-picker-cell-today .ant-picker-cell-inner::before {
+  border-color: #6366f1 !important;
+}
+
+.ant-modal-content {
+  background: rgba(17, 24, 39, 0.98) !important;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+.ant-modal-header {
+  background: rgba(31, 41, 55, 0.8) !important;
+  border-bottom-color: rgba(99, 102, 241, 0.2) !important;
+}
+
+.ant-modal-title {
+  color: white !important;
+}
+
+.ant-modal-body {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.ant-card {
+  background: rgba(31, 41, 55, 0.6);
+  border-color: rgba(99, 102, 241, 0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ant-card-hoverable:hover {
+  border-color: rgba(99, 102, 241, 0.4);
+  box-shadow: 0 8px 24px rgba(99, 102, 241, 0.2);
+}
+
+.ant-tag {
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.ant-empty-description {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.ant-dropdown-menu {
+  background: rgba(17, 24, 39, 0.98) !important;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+.ant-dropdown-menu-item {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.ant-dropdown-menu-item:hover {
+  background: rgba(99, 102, 241, 0.1) !important;
+}
+
+.ant-dropdown-menu-item-danger:hover {
+  background: rgba(239, 68, 68, 0.1) !important;
+}
+
+.ant-list-item {
+  border-color: rgba(99, 102, 241, 0.1) !important;
+}
+
+.ant-drawer-header {
+  border-bottom-color: rgba(99, 102, 241, 0.2) !important;
+}
+
+.ant-drawer-close {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.ant-drawer-close:hover {
+  color: white;
+  background: rgba(99, 102, 241, 0.1);
+  border-radius: 8px;
+}
+
+.ant-spin-dot-item {
+  background-color: #6366f1;
+}
+
+.ant-tooltip-inner {
+  background: rgba(17, 24, 39, 0.98);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  color: white;
+  font-weight: 500;
+}
+
+.ant-tooltip-arrow-content {
+  background: rgba(17, 24, 39, 0.98);
+}
+
+/* Custom Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes glow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(99, 102, 241, 0.6);
+  }
+}
+
+/* Utility Classes */
+.fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.slide-in {
+  animation: slideIn 0.5s ease-out;
+}
+
+.scale-in {
+  animation: scaleIn 0.5s ease-out;
+}
+
+.glass-effect {
+  background: rgba(31, 41, 55, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+.gradient-border {
+  position: relative;
+  border: 2px solid transparent;
+  background: linear-gradient(rgba(31, 41, 55, 0.8), rgba(31, 41, 55, 0.8))
+      padding-box,
+    linear-gradient(135deg, #6366f1, #8b5cf6) border-box;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(99, 102, 241, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 14px;
+  }
+
+  .ant-btn {
+    font-size: 13px;
+    padding: 4px 12px;
+  }
+
+  .ant-card {
+    border-radius: 12px;
+  }
+
+  .ant-drawer {
+    width: 100% !important;
+    max-width: 380px !important;
+  }
+}
+
+/* Loading States */
+.loading-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(31, 41, 55, 0.5) 0%,
+    rgba(99, 102, 241, 0.2) 50%,
+    rgba(31, 41, 55, 0.5) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Focus Visible */
+*:focus-visible {
+  outline: 2px solid rgba(99, 102, 241, 0.5);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Selection */
+::selection {
+  background: rgba(99, 102, 241, 0.3);
+  color: white;
+}
+
+::-moz-selection {
+  background: rgba(99, 102, 241, 0.3);
+  color: white;
+}
+
+/* Print Styles */
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+
+  .ant-drawer,
+  .ant-modal {
+    display: none;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: light) {
+  body {
+    background: #f8fafc;
+  }
+}
